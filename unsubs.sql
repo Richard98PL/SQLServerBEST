@@ -14,9 +14,9 @@ CONCAT(CONVERT(varchar, u.SubscriberId),
       REPLACE(CONVERT(varchar, u.EventDate, 21), ' ', '' )) AS Id,
 (SELECT COUNT(s.SubscriberId) FROM _Sent as s
 INNER JOIN _JourneyActivity ja ON TriggererSendDefinitionObjectId = ja.JourneyActivityObjectId
-WHERE JobId = u.JobId) as AllSends,
+WHERE JobId = u.JobId) as AllSends
 
-(SELECT COUNT(s.SubscriberId) FROM _Sent as s
+/*,(SELECT COUNT(s.SubscriberId) FROM _Sent as s
 INNER JOIN _JourneyActivity ja ON TriggererSendDefinitionObjectId = ja.JourneyActivityObjectId
 WHERE s.SubscriberKey LIKE '%003%' AND JobId = u.JobId) as AllSendsCustomer,
 
@@ -26,7 +26,7 @@ WHERE s.SubscriberKey LIKE '%00Q%' AND JobId = u.JobId) as AllSendsLead,
 
 (SELECT COUNT(s.SubscriberId) FROM _Sent as s
 INNER JOIN  _JourneyActivity ja ON TriggererSendDefinitionObjectId = ja.JourneyActivityObjectId
-WHERE s.SubscriberKey LIKE '%@%' AND JobId = u.JobId) as AllSendsWebCollect
+WHERE s.SubscriberKey LIKE '%@%' AND JobId = u.JobId) as AllSendsWebCollect*/
 
 FROM ENT._Unsubscribe u 
 LEFT JOIN ENT._Subscribers s
